@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #182b38 0%, #08111d 100%);
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 550px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Duara la Neon Ring na Animation yake */
+.neon-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    #00ffff 70%,
+    #0066ff 79%,
+    #ff00ed 86%,
+    #00ffff 93%
+  );
+  filter: drop-shadow(0 0 20px #00ffff);
+  animation: ringRotate 3s linear infinite;
+  pointer-events: none;
+}
+
+.neon-ring::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: #010c28;
+}
+
+@keyframes ringRotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Muundo wa Kadi */
+.card {
+  position: relative;
+  width: 380px;
+  min-height: 480px;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mtindo wa Fomu zote Mbili */
+.face {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #010c28; /* Inaziba fomu ya nyuma isionekane */
+  border-radius: 20px;
+  padding: 10px 0;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Pande za Front na Back */
+.front {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) rotateY(0deg);
+}
+
+.back {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95) rotateY(180deg);
+}
+
+/* Wakati wa kugeuka kwenda Sign Up */
+.card.signup-mode .front {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95) rotateY(-180deg);
+}
+
+.card.signup-mode .back {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) rotateY(0deg);
+}
+
+/* Text & Headings */
+.face h2 {
+  font-size: 32px;
+  font-weight: bold;
+  color: #76ffef;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.face p {
+  font-size: 14px;
+  color: #91a6b4;
+  margin-bottom: 22px;
+}
+
+.switch-text {
+  margin-top: 18px;
+  margin-bottom: 0 !important;
+}
+
+/* Input Fields */
+.face input[type="text"],
+.face input[type="email"],
+.face input[type="password"] {
+  width: 330px;
+  height: 48px;
+  margin-bottom: 18px;
+  padding: 0 20px;
+  font-size: 15px;
+  border-radius: 25px;
+  background: #050f18;
+  color: #d8e9ef;
+  border: 2px solid #15232e;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.face input:focus {
+  outline: none;
+  border-color: #62ffe0;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+}
+
+/* Checkbox & Options */
+.options {
+  width: 330px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #91a6b4;
+  cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+  accent-color: #00ffff;
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+
+/* Buttons */
+button {
+  width: 330px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 25px;
+  color: #dffeff;
+  border: 2px solid #39867f;
+  background: linear-gradient(90deg, #123442, #102533);
+  box-shadow: 0 0 16px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  border-color: #52d9c3;
+  box-shadow: 0 0 22px rgba(0, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Links */
+a {
+  color: #6bffef;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.2s;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: #ffffff;
+}
